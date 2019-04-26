@@ -1,5 +1,13 @@
 package util;
 
+/**
+ * Euclidian coordinates that allows a relatively precise representation of a
+ * point in a three dimentional space. It can also be used in the context of a
+ * two dimentional space as the z axis is independent.
+ * 
+ * @author cidit
+ *
+ */
 public class Coordinates {
 
 	private float x, y, z;
@@ -53,7 +61,7 @@ public class Coordinates {
 	public static Coordinates getReflexionFromOrigin(Coordinates coordinates) {
 		return new Coordinates(-coordinates.x, -coordinates.y, -coordinates.z);
 	}
-	
+
 	public static Coordinates stringToCoordinates(String formatedCoordinates) {
 		char delimiter = ';';
 		int amountOfDelimiters = countCharInString(delimiter, formatedCoordinates);
@@ -72,7 +80,7 @@ public class Coordinates {
 		}
 		return new Coordinates(x, y, z);
 	}
-	
+
 	private static float floatToPrecision(float f, int precision) {
 		int mult = (int) Math.pow(10, precision);
 		float tmp = (int) f * mult;

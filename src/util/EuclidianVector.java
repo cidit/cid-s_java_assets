@@ -1,5 +1,12 @@
 package util;
 
+/**
+ * Euclidian vector representing with accuracy a length and a direction. This is
+ * not a data structure.
+ * 
+ * @author cidit
+ *
+ */
 public class EuclidianVector {
 
 	private Coordinates initialPoint;

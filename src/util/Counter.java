@@ -16,11 +16,11 @@ public class Counter {
 	/**
 	 * Constructor
 	 * 
-	 * @param millis time to live before expiration (enter Long.MAX_VALUE for no
+	 * @param ttl time to live before expiration (enter Long.MAX_VALUE for no
 	 *               expiration)
 	 */
-	public Counter(long millis) {
-		ttl = millis;
+	public Counter(long ttl) {
+		this.ttl = ttl;
 		count = 0;
 	}
 

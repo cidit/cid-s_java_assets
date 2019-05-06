@@ -72,6 +72,12 @@ public class EuclidianVector {
 		return new Coordinates(initialPoint.getX() + xProjection, initialPoint.getY() + yProjection,
 				initialPoint.getZ() + zProjection);
 	}
+	
+	public void setProjections(float xProjection, float yProjection, float zProjection) {
+		this.xProjection = xProjection;
+		this.yProjection = yProjection;
+		this.zProjection = zProjection;
+	}
 
 	public float getXProjection() {
 		return xProjection;

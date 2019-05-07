@@ -9,10 +9,10 @@ package util;
  */
 public class EuclidianVector {
 
-	private Coordinates initialPoint;
+	private Coordinate initialPoint;
 	private float xProjection, yProjection, zProjection;
 
-	public EuclidianVector(Coordinates initialPoint, Coordinates terminalPoint) {
+	public EuclidianVector(Coordinate initialPoint, Coordinate terminalPoint) {
 		this.initialPoint = initialPoint;
 		setTerminalPoint(terminalPoint);
 	}
@@ -29,32 +29,32 @@ public class EuclidianVector {
 	}
 
 	public EuclidianVector(String formatedProjections) {
-		Coordinates coordinates = Coordinates.stringToCoordinates(formatedProjections);
+		Coordinate coordinates = Coordinate.stringToCoordinates(formatedProjections);
 		xProjection = coordinates.getX();
 		yProjection = coordinates.getY();
 		zProjection = coordinates.getZ();
 	}
 
 	public EuclidianVector(String formatedInitialPoint, String formatedTerminalPoint) {
-		this(Coordinates.stringToCoordinates(formatedInitialPoint),
-				Coordinates.stringToCoordinates(formatedTerminalPoint));
+		this(Coordinate.stringToCoordinates(formatedInitialPoint),
+				Coordinate.stringToCoordinates(formatedTerminalPoint));
 	}
 
-	public void setInitialPoint(Coordinates initialPoint) {
+	public void setInitialPoint(Coordinate initialPoint) {
 		this.initialPoint = initialPoint;
 	}
 
-	public void moveInitialPoint(Coordinates initialPoint) {
-		Coordinates tmpTerminal = getTerminalPoint();
+	public void moveInitialPoint(Coordinate initialPoint) {
+		Coordinate tmpTerminal = getTerminalPoint();
 		setInitialPoint(initialPoint);
 		xProjection = initialPoint.getX() - tmpTerminal.getX();
 		yProjection = initialPoint.getY() - tmpTerminal.getY();
 		zProjection = initialPoint.getZ() - tmpTerminal.getZ();
 	}
 
-	public void setTerminalPoint(Coordinates terminalPoint) {
+	public void setTerminalPoint(Coordinate terminalPoint) {
 		if (initialPoint == null) {
-			setInitialPoint(new Coordinates(terminalPoint.getX() - xProjection, terminalPoint.getY() - yProjection,
+			setInitialPoint(new Coordinate(terminalPoint.getX() - xProjection, terminalPoint.getY() - yProjection,
 					terminalPoint.getZ() - zProjection));
 		} else {
 			xProjection = initialPoint.getX() - terminalPoint.getX();
@@ -64,12 +64,12 @@ public class EuclidianVector {
 
 	}
 
-	public Coordinates getInitialPoint() {
+	public Coordinate getInitialPoint() {
 		return initialPoint;
 	}
 
-	public Coordinates getTerminalPoint() {
-		return new Coordinates(initialPoint.getX() + xProjection, initialPoint.getY() + yProjection,
+	public Coordinate getTerminalPoint() {
+		return new Coordinate(initialPoint.getX() + xProjection, initialPoint.getY() + yProjection,
 				initialPoint.getZ() + zProjection);
 	}
 	

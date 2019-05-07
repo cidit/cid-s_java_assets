@@ -8,23 +8,23 @@ package util;
  * @author cidit
  *
  */
-public class Coordinates {
+public class Coordinate {
 
 	private float x, y, z;
 
-	public Coordinates(float x, float y) {
+	public Coordinate(float x, float y) {
 		this.x = x;
 		this.y = y;
 		this.z = 0;
 	}
 
-	public Coordinates(float x, float y, float z) {
+	public Coordinate(float x, float y, float z) {
 		this(x, y);
 		this.z = z;
 	}
 
-	public Coordinates(String formatedCoordinates) {
-		Coordinates coordinates = stringToCoordinates(formatedCoordinates);
+	public Coordinate(String formatedCoordinates) {
+		Coordinate coordinates = stringToCoordinates(formatedCoordinates);
 		x = coordinates.x;
 		y = coordinates.y;
 		z = coordinates.z;
@@ -54,15 +54,15 @@ public class Coordinates {
 		return floatToPrecision(z, precision);
 	}
 
-	public Coordinates getReflexionFromOrigin() {
-		return new Coordinates(-x, -y, -z);
+	public Coordinate getReflexionFromOrigin() {
+		return new Coordinate(-x, -y, -z);
 	}
 
-	public static Coordinates getReflexionFromOrigin(Coordinates coordinates) {
-		return new Coordinates(-coordinates.x, -coordinates.y, -coordinates.z);
+	public static Coordinate getReflexionFromOrigin(Coordinate coordinates) {
+		return new Coordinate(-coordinates.x, -coordinates.y, -coordinates.z);
 	}
 
-	public static Coordinates stringToCoordinates(String formatedCoordinates) {
+	public static Coordinate stringToCoordinates(String formatedCoordinates) {
 		char delimiter = ';';
 		int amountOfDelimiters = countCharInString(delimiter, formatedCoordinates);
 		float x, y = 0, z = 0;
@@ -78,7 +78,7 @@ public class Coordinates {
 					formatedCoordinates.lastIndexOf(delimiter)));
 			z = Float.parseFloat(formatedCoordinates.substring(formatedCoordinates.lastIndexOf(delimiter)));
 		}
-		return new Coordinates(x, y, z);
+		return new Coordinate(x, y, z);
 	}
 
 	private static float floatToPrecision(float f, int precision) {
@@ -106,9 +106,9 @@ public class Coordinates {
 			return true;
 		if (obj == null)
 			return false;
-		if (!(obj instanceof Coordinates))
+		if (!(obj instanceof Coordinate))
 			return false;
-		Coordinates other = (Coordinates) obj;
+		Coordinate other = (Coordinate) obj;
 		if (Float.floatToIntBits(x) != Float.floatToIntBits(other.x))
 			return false;
 		if (Float.floatToIntBits(y) != Float.floatToIntBits(other.y))

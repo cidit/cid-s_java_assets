@@ -5,10 +5,10 @@ public class Hitbox {
 	private Coordinate coordinate;
 	private Dimention dimention;
 
-	private int left;
-	private int right;
-	private int top;
-	private int bottom;
+	private float left;
+	private float right;
+	private float top;
+	private float bottom;
 
 	private Coordinate superiorLeft;
 	private Coordinate superiorRight;

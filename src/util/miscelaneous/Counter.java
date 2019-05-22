@@ -1,4 +1,4 @@
-package util;
+package util.miscelaneous;
 
 /**
  * Counter that counts with manual incrementations. The maximum incrementation

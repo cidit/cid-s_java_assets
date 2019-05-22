@@ -1,4 +1,4 @@
-package util;
+package util.geometry;
 
 /**
  * Euclidian vector representing with accuracy a length and a direction. This is
@@ -26,18 +26,6 @@ public class EuclidianVector {
 	public EuclidianVector(float xProjection, float yProjection, float zProjection) {
 		this(xProjection, yProjection);
 		this.zProjection = zProjection;
-	}
-
-	public EuclidianVector(String formatedProjections) {
-		Coordinate coordinates = Coordinate.stringToCoordinates(formatedProjections);
-		xProjection = coordinates.getX();
-		yProjection = coordinates.getY();
-		zProjection = coordinates.getZ();
-	}
-
-	public EuclidianVector(String formatedInitialPoint, String formatedTerminalPoint) {
-		this(Coordinate.stringToCoordinates(formatedInitialPoint),
-				Coordinate.stringToCoordinates(formatedTerminalPoint));
 	}
 
 	public void setInitialPoint(Coordinate initialPoint) {
@@ -72,7 +60,7 @@ public class EuclidianVector {
 		return new Coordinate(initialPoint.getX() + xProjection, initialPoint.getY() + yProjection,
 				initialPoint.getZ() + zProjection);
 	}
-	
+
 	public void setProjections(float xProjection, float yProjection, float zProjection) {
 		this.xProjection = xProjection;
 		this.yProjection = yProjection;
@@ -91,29 +79,11 @@ public class EuclidianVector {
 		return zProjection;
 	}
 
-	public float getXProjection(int precision) {
-		return floatToPrecision(xProjection, precision);
-	}
-
-	public float getYProjection(int precision) {
-		return floatToPrecision(yProjection, precision);
-	}
-
-	public float getZProjection(int precision) {
-		return floatToPrecision(zProjection, precision);
-	}
-
 	public float getMagnitude() {
-		float hypotenuse = (float) Math.hypot(xProjection, yProjection);
-		float magnitude = (float) Math.hypot(hypotenuse, zProjection);
-		return magnitude;
+		return Coordinate.distance(initialPoint, getTerminalPoint());
 	}
 
-	public float getMagnitude(int precision) {
-		return floatToPrecision(getMagnitude(), precision);
-	}
-
-	public EuclidianVector opposite() {
+	public EuclidianVector getOpposite() {
 		return new EuclidianVector(-xProjection, -yProjection, -zProjection);
 	}
 
@@ -151,24 +121,13 @@ public class EuclidianVector {
 		return a.xProjection * b.xProjection + a.yProjection * b.yProjection + a.zProjection * b.zProjection;
 	}
 
-	public static float scalarProduct(EuclidianVector a, EuclidianVector b, int precision) {
-		return floatToPrecision(scalarProduct(a, b), precision);
-	}
-
-	private static float floatToPrecision(float f, int precision) {
-		int mult = (int) Math.pow(10, precision);
-		float tmp = (int) f * mult;
-		return tmp / mult;
-	}
-
 	@Override
 	public String toString() {
-		return "initial: " + initialPoint.toString() + " terminal: " + getTerminalPoint().toString() + " projections: "
-				+ projectionsToString();
+		return initialPoint.toString() + ";" + getTerminalPoint().toString() + ";" + projectionsToString();
 	}
 
 	public String projectionsToString() {
-		return xProjection + ";" + yProjection + ";" + zProjection;
+		return new Coordinate(xProjection, yProjection, zProjection).toString();
 	}
 
 }

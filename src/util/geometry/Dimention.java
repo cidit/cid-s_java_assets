@@ -1,4 +1,4 @@
-package util;
+package util.geometry;
 
 /**
  * made to not have any dependence to the swing package

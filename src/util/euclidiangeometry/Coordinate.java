@@ -5,8 +5,8 @@ import static java.lang.Math.pow;
 
 /**
  * Euclidian coordinates that allows a relatively precise representation of a
- * point in a three dimentional space. It can also be used in the context of a
- * two dimentional space as the z axis is independent.
+ * point in a three dimensional space. It can also be used in the context of a
+ * two dimensional space as the z axis is independent.
  * 
  * @author cidit
  *

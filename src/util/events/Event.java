@@ -1,9 +1,20 @@
 package util.events;
 
+/**
+ * event
+ * 
+ * @author cidit
+ *
+ */
 public abstract class Event {
 
-	public Event() {
-		// TODO Auto-generated constructor stub
+	private EventSource source;
+
+	public Event(EventSource source) {
+		this.source = source;
 	}
-	
+
+	public EventSource getSource() {
+		return source;
+	}
 }

@@ -1,7 +1,7 @@
 package util.engine;
 
-import util.geometry.Coordinate;
-import util.geometry.Dimention;
+import util.euclidiangeometry.Coordinate;
+import util.euclidiangeometry.Dimention;
 
 public class Hitbox {
 

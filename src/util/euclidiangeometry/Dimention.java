@@ -1,4 +1,4 @@
-package util.geometry;
+package util.euclidiangeometry;
 
 /**
  * made to not have any dependence to the swing package

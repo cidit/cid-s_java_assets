@@ -1,4 +1,4 @@
-package util.geometry;
+package util.euclidiangeometry;
 
 /**
  * Euclidian vector representing with accuracy a length and a direction. This is

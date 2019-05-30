@@ -1,4 +1,4 @@
-package util.geometry;
+package util.euclidiangeometry;
 
 import static java.lang.Math.sqrt;
 import static java.lang.Math.pow;

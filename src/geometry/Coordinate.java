@@ -13,7 +13,7 @@ import static java.lang.Math.pow;
  */
 public class Coordinate {
 
-	private float x, y, z;
+	final float x, y, z;
 
 	public Coordinate(float x, float y) {
 		this.x = x;
@@ -22,7 +22,8 @@ public class Coordinate {
 	}
 
 	public Coordinate(float x, float y, float z) {
-		this(x, y);
+		this.x = x;
+		this.y = y;
 		this.z = z;
 	}
 

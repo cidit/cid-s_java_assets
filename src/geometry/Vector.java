@@ -9,8 +9,8 @@ package geometry;
  */
 public class Vector {
 
-	private Coordinate initialPoint;
-	private float xProjection, yProjection, zProjection;
+	Coordinate initialPoint;
+	float xProjection, yProjection, zProjection;
 
 	public Vector(Coordinate initialPoint, Coordinate terminalPoint) {
 		this.initialPoint = initialPoint;
@@ -35,19 +35,19 @@ public class Vector {
 	public void moveInitialPoint(Coordinate initialPoint) {
 		Coordinate tmpTerminal = getTerminalPoint();
 		setInitialPoint(initialPoint);
-		xProjection = initialPoint.getX() - tmpTerminal.getX();
-		yProjection = initialPoint.getY() - tmpTerminal.getY();
-		zProjection = initialPoint.getZ() - tmpTerminal.getZ();
+		xProjection = initialPoint.x - tmpTerminal.x;
+		yProjection = initialPoint.y - tmpTerminal.y;
+		zProjection = initialPoint.z - tmpTerminal.z;
 	}
 
 	public void setTerminalPoint(Coordinate terminalPoint) {
 		if (initialPoint == null) {
-			setInitialPoint(new Coordinate(terminalPoint.getX() - xProjection, terminalPoint.getY() - yProjection,
-					terminalPoint.getZ() - zProjection));
+			setInitialPoint(new Coordinate(terminalPoint.x - xProjection, terminalPoint.y - yProjection,
+					terminalPoint.z - zProjection));
 		} else {
-			xProjection = initialPoint.getX() - terminalPoint.getX();
-			yProjection = initialPoint.getY() - terminalPoint.getY();
-			zProjection = initialPoint.getZ() - terminalPoint.getZ();
+			xProjection = initialPoint.x - terminalPoint.x;
+			yProjection = initialPoint.y - terminalPoint.y;
+			zProjection = initialPoint.z - terminalPoint.z;
 		}
 
 	}
@@ -57,8 +57,8 @@ public class Vector {
 	}
 
 	public Coordinate getTerminalPoint() {
-		return new Coordinate(initialPoint.getX() + xProjection, initialPoint.getY() + yProjection,
-				initialPoint.getZ() + zProjection);
+		return new Coordinate(initialPoint.x + xProjection, initialPoint.y + yProjection,
+				initialPoint.z + zProjection);
 	}
 
 	public void setProjections(float xProjection, float yProjection, float zProjection) {
@@ -105,29 +105,8 @@ public class Vector {
 		zProjection = zProjection * scalar;
 	}
 
-	// might be flawed because of the precision of the operations on floating-point
-	// numbers
-	public static boolean isParallel(Vector a, Vector b) {
-		if (!(a.xProjection / a.yProjection == b.xProjection / b.yProjection))
-			return false;
-		if (!(a.zProjection / a.yProjection == b.zProjection / b.yProjection))
-			return false;
-		if (!(a.xProjection / a.zProjection == b.xProjection / b.zProjection))
-			return false;
-		return true;
-	}
-
 	public static float scalarProduct(Vector a, Vector b) {
 		return a.xProjection * b.xProjection + a.yProjection * b.yProjection + a.zProjection * b.zProjection;
-	}
-
-	@Override
-	public String toString() {
-		return initialPoint.toString() + ";" + getTerminalPoint().toString() + ";" + projectionsToString();
-	}
-
-	public String projectionsToString() {
-		return new Coordinate(xProjection, yProjection, zProjection).toString();
 	}
 
 }

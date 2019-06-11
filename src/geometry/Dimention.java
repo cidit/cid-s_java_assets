@@ -8,8 +8,7 @@ package geometry;
  */
 public class Dimention {
 
-	private int width;
-	private int height;
+	int width, height;
 
 	public Dimention(int width, int height) {
 		this.width = width;

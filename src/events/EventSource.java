@@ -1,4 +1,4 @@
-package util.events;
+package events;
 
 /**
  * sends events to listeners

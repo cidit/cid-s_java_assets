@@ -1,4 +1,4 @@
-package util.events;
+package events;
 
 /**
  * listens to events from a source and handles them

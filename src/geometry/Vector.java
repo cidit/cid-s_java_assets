@@ -1,4 +1,4 @@
-package util.euclidiangeometry;
+package geometry;
 
 /**
  * Euclidian vector representing with accuracy a length and a direction. This is
@@ -7,23 +7,23 @@ package util.euclidiangeometry;
  * @author cidit
  *
  */
-public class EuclidianVector {
+public class Vector {
 
 	private Coordinate initialPoint;
 	private float xProjection, yProjection, zProjection;
 
-	public EuclidianVector(Coordinate initialPoint, Coordinate terminalPoint) {
+	public Vector(Coordinate initialPoint, Coordinate terminalPoint) {
 		this.initialPoint = initialPoint;
 		setTerminalPoint(terminalPoint);
 	}
 
-	public EuclidianVector(float xProjection, float yProjection) {
+	public Vector(float xProjection, float yProjection) {
 		this.xProjection = xProjection;
 		this.yProjection = yProjection;
 		this.zProjection = 0;
 	}
 
-	public EuclidianVector(float xProjection, float yProjection, float zProjection) {
+	public Vector(float xProjection, float yProjection, float zProjection) {
 		this(xProjection, yProjection);
 		this.zProjection = zProjection;
 	}
@@ -83,17 +83,17 @@ public class EuclidianVector {
 		return Coordinate.distance(initialPoint, getTerminalPoint());
 	}
 
-	public EuclidianVector getOpposite() {
-		return new EuclidianVector(-xProjection, -yProjection, -zProjection);
+	public Vector getOpposite() {
+		return new Vector(-xProjection, -yProjection, -zProjection);
 	}
 
-	public void add(EuclidianVector vector) {
+	public void add(Vector vector) {
 		xProjection += vector.xProjection;
 		yProjection += vector.yProjection;
 		zProjection += vector.zProjection;
 	}
 
-	public void subtract(EuclidianVector vector) {
+	public void subtract(Vector vector) {
 		xProjection -= vector.xProjection;
 		yProjection -= vector.yProjection;
 		zProjection -= vector.zProjection;
@@ -107,7 +107,7 @@ public class EuclidianVector {
 
 	// might be flawed because of the precision of the operations on floating-point
 	// numbers
-	public static boolean isParallel(EuclidianVector a, EuclidianVector b) {
+	public static boolean isParallel(Vector a, Vector b) {
 		if (!(a.xProjection / a.yProjection == b.xProjection / b.yProjection))
 			return false;
 		if (!(a.zProjection / a.yProjection == b.zProjection / b.yProjection))
@@ -117,7 +117,7 @@ public class EuclidianVector {
 		return true;
 	}
 
-	public static float scalarProduct(EuclidianVector a, EuclidianVector b) {
+	public static float scalarProduct(Vector a, Vector b) {
 		return a.xProjection * b.xProjection + a.yProjection * b.yProjection + a.zProjection * b.zProjection;
 	}
 

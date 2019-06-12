@@ -1,35 +1,56 @@
 package geometry;
 
-public class Line extends Straight {
+import static java.lang.Math.abs;
 
-	Coordinate p1, p2;
+public class Line {
 
-	// WORK IN PROGRESS
+	// a = variation, b = y origin
+	float a, b;
+
+	public Line(float a, float b) {
+		this.a = a;
+		this.b = b;
+	}
+
 	public Line(Coordinate p1, Coordinate p2) {
-		super(p1, p2);
-		this.p1 = p1;
-		this.p2 = p2;
+		a = (p2.y - p1.y)/(p2.x - p2.x);
+		b = (p2.x*p2.y - p2.x*p2.y)/(p2.x - p1.x);
 	}
 
-	public Coordinate getP1() {
-		return p1;
+	public float getA() {
+		return a;
 	}
 
-	public Coordinate getP2() {
-		return p2;
+	public float getB() {
+		return b;
 	}
 
-	public void setP1(Coordinate p1) {
-		this.p1 = p1;
+	public void setA(float a) {
+		this.a = a;
 	}
 
-	public void setP2(Coordinate p2) {
-		this.p2 = p2;
+	public void setB(float b) {
+		this.b = b;
+	}
+
+	public float fx(float x) {
+		return (a * x) + b;
+	}
+	
+	public float fy(float y) {
+		return (y - b) / a;
 	}
 	
 	public boolean intersects(Line line) {
-		// TODO UNFINISHED
-		return false;
+		return a != line.a;
 	}
-
+	
+	
+	// TODO use trigonometry. use the y origin as reference for the angles
+	public Coordinate intersectsAt(Line line) {
+		if (!intersects(line))
+			return null;
+		// TODO UNFINISHED
+		return null;
+	}
 }

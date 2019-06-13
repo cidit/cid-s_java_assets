@@ -6,7 +6,7 @@ package geometry;
  * @author cid
  *
  */
-public final class Dimention {
+public final class Dimension {
 
 	final float width, height, depth;
 
@@ -15,13 +15,13 @@ public final class Dimention {
 	 * @param width
 	 * @param height
 	 */
-	public Dimention(float width, float height) {
+	public Dimension(float width, float height) {
 		this.width = width;
 		this.height = height;
 		this.depth = 0;
 	}
 	
-	public Dimention(float width, float height, float depth) {
+	public Dimension(float width, float height, float depth) {
 		this.width = width;
 		this.height = height;
 		this.depth = depth;

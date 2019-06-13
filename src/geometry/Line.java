@@ -26,6 +26,7 @@ public class Line {
 	}
 
 	public void setA(float a) {
+		// what if 0? TODO
 		this.a = a;
 	}
 
@@ -45,12 +46,22 @@ public class Line {
 		return a != line.a;
 	}
 	
-	
 	// TODO use trigonometry. use the y origin as reference for the angles
 	public Coordinate intersectsAt(Line line) {
 		if (!intersects(line))
 			return null;
-		// TODO UNFINISHED
+
+		Line higherOrigin, lowerOrigin;
+		
+		if (b > line.b) {
+			higherOrigin = this;
+			lowerOrigin = line;
+		} else {
+			higherOrigin = line;
+			lowerOrigin = this;
+		}
+		
+		
 		return null;
 	}
 }

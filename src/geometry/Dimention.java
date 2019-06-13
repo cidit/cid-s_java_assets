@@ -1,25 +1,47 @@
 package geometry;
 
 /**
- * made to not have any dependence to the swing package
+ * This class represents a hyperrectangular space using floating point numbers.
  * 
  * @author cid
  *
  */
-public class Dimention {
+public final class Dimention {
 
-	int width, height;
+	final float width, height, depth;
 
-	public Dimention(int width, int height) {
+	/**
+	 * Constructor for a two dimensional rectangle.
+	 * @param width
+	 * @param height
+	 */
+	public Dimention(float width, float height) {
 		this.width = width;
 		this.height = height;
+		this.depth = 0;
+	}
+	
+	public Dimention(float width, float height, float depth) {
+		this.width = width;
+		this.height = height;
+		this.depth = depth;
 	}
 
-	public int getWidth() {
+	public float getWidth() {
 		return width;
 	}
 
-	public int getHeight() {
+	public float getHeight() {
 		return height;
 	}
+	
+	public float getDepth() {
+		return depth;
+	}
+	
+	@Override
+	public String toString() {
+		return width + ";" + height + ";" + depth;
+	}
+	
 }

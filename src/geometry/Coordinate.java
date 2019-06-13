@@ -1,17 +1,15 @@
 package geometry;
 
-import static java.lang.Math.sqrt;
 import static java.lang.Math.pow;
+import static java.lang.Math.sqrt;
 
 /**
- * Euclidian coordinates that allows a relatively precise representation of a
- * point in a three dimensional space. It can also be used in the context of a
- * two dimensional space as the z axis is independent.
+ * This class represents a position in space using floating point numbers.
  * 
  * @author cidit
  *
  */
-public class Coordinate {
+public final class Coordinate {
 
 	final float x, y, z;
 
@@ -37,10 +35,6 @@ public class Coordinate {
 
 	public float getZ() {
 		return z;
-	}
-
-	public static Coordinate getReflexionFromOrigin(Coordinate coordinates) {
-		return new Coordinate(-coordinates.x, -coordinates.y, -coordinates.z);
 	}
 
 	public static float distance(Coordinate a, Coordinate b) {

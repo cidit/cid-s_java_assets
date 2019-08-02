@@ -20,6 +20,8 @@ public class Counter {
 	 *               expiration)
 	 */
 	public Counter(long ttl) {
+		if (ttl < 0)
+			throw new IllegalArgumentException("ttl (time to live) cannot be lower than 0");
 		this.ttl = ttl;
 		count = 0;
 	}
@@ -28,6 +30,7 @@ public class Counter {
 	 * Increments the counter.
 	 */
 	public void count() {
+		if (isExpired()) return;
 		count++;
 	}
 	

@@ -4,7 +4,8 @@ import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
 
 /**
- * This class represents a position in space using floating point numbers.
+ * This class represents a position on a three-dimensional plane using floating
+ * points numbers. UNMUTABLE
  * 
  * @author cidit
  *
@@ -13,16 +14,18 @@ public final class Coordinate {
 
 	final float x, y, z;
 
-	public Coordinate(float x, float y) {
-		this.x = x;
-		this.y = y;
-		this.z = 0;
-	}
-
+	/**
+	 * Constructor for an immutable position.
+	 * 
+	 */
 	public Coordinate(float x, float y, float z) {
 		this.x = x;
 		this.y = y;
 		this.z = z;
+	}
+
+	public Coordinate(float x, float y) {
+		this(x, y, 0);
 	}
 
 	public float getX() {
@@ -47,12 +50,22 @@ public final class Coordinate {
 	}
 
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + Float.floatToIntBits(x);
+		result = prime * result + Float.floatToIntBits(y);
+		result = prime * result + Float.floatToIntBits(z);
+		return result;
+	}
+
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (obj == null)
 			return false;
-		if (!(obj instanceof Coordinate))
+		if (getClass() != obj.getClass())
 			return false;
 		Coordinate other = (Coordinate) obj;
 		if (Float.floatToIntBits(x) != Float.floatToIntBits(other.x))
